@@ -95,8 +95,8 @@ public abstract class CameraState
         Vector3 direction = -_orbitalPosition;
 
         Quaternion toTargetRotation = Quaternion.LookRotation(direction);
+         
         Vector3 relativePosOffset = toTargetRotation * _positionOffset;
-
         _camera.position = _orbitalCenterPoint + _orbitalPosition + relativePosOffset;
     }
 

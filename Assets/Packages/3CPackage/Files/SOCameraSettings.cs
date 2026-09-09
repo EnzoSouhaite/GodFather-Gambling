@@ -56,7 +56,14 @@ public class SOCameraSettings : ScriptableObject
     [Header("Orbital")]
     public bool usePresetOrbital = true;
 
-    public float orbitalRadius = 2.0f;
+    private float _orbitalRadius = 2.0f;
+
+    public float orbitalRadius
+    {
+        get => usePresetOrbital ? _orbitalRadius : 0.01f;
+        set => _orbitalRadius = value;
+    }
+
     public Vector2 startAngle = Vector2.zero;
 
     [Header("Clamp")]

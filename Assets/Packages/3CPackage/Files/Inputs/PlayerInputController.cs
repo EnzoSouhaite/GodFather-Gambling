@@ -72,6 +72,7 @@ public class PlayerInputController : MonoBehaviour,
         ConnectSprintInputAction();
         ConnectCrouchInputAction();
         ConnectJumpInputAction();
+        ConnectInteractInputAction();
     }
 
     private void ConnectMoveInputAction()
@@ -108,6 +109,13 @@ public class PlayerInputController : MonoBehaviour,
         _inputActionJump.action.canceled += OnJumpCanceled;
     }
 
+    private void ConnectInteractInputAction()
+    {
+        if (_inputActionInteract == null || _inputActionInteract.action == null) return;
+
+        _inputActionInteract.action.started += OnInteractStarted;
+    }
+
     #endregion
 
     #region Disconnection
@@ -118,6 +126,7 @@ public class PlayerInputController : MonoBehaviour,
         DisconnectSprintInputAction();
         DisconnectCrouchInputAction();
         DisconnectJumpInputAction();
+        DisconnectInteractInputAction();
     }
 
     private void DisconnectMoveInputAction()
@@ -151,6 +160,13 @@ public class PlayerInputController : MonoBehaviour,
         _inputActionJump.action.started -= OnJumpStarted;
         _inputActionJump.action.performed -= OnJumpPerformed;
         _inputActionJump.action.canceled -= OnJumpCanceled;
+    }
+
+    private void DisconnectInteractInputAction()
+    {
+        if (_inputActionInteract == null || _inputActionInteract.action == null) return;
+
+        _inputActionInteract.action.started -= OnInteractStarted;
     }
 
     #endregion
@@ -267,6 +283,15 @@ public class PlayerInputController : MonoBehaviour,
     private void OnJumpCanceled(InputAction.CallbackContext obj)
     {
         onJumpEnd?.Invoke();
+    }
+
+    #endregion
+
+    #region Interact
+
+    private void OnInteractStarted(InputAction.CallbackContext obj)
+    {
+        onInteract?.Invoke();
     }
 
     #endregion

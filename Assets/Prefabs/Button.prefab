@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2386909688920736599}
   - component: {fileID: 2829093673924817135}
   - component: {fileID: 1519947088058221827}
+  - component: {fileID: 7572537593658544106}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -69,6 +70,220 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02baaaadbc4cad4b88535676d0fac01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThreeDButton
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7572537593658544106}
+        m_TargetAssemblyTypeName: TweenCoreComponent, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7572537593658544106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2230867892445733877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4fedc28c2c3a949ae6f1e79d896062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TweenCoreComponent
+  _name: 
+  _playOnStart: 0
+  _isParallel: 0
+  _isLoop: 0
+  _isInfinite: 0
+  _numIteration: 1
+  _DestroyWhenFinished: 0
+  _surviveOnUnload: 0
+  _properties:
+  - rid: 7320318830429339707
+  - rid: 7320318830429339708
+  _unityEvents:
+    OnStart:
+      m_PersistentCalls:
+        m_Calls: []
+    OnUpdate:
+      m_PersistentCalls:
+        m_Calls: []
+    OnFinish:
+      m_PersistentCalls:
+        m_Calls: []
+    OnLoopFinish:
+      m_PersistentCalls:
+        m_Calls: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7320318830429339707
+      type: {class: 'TweenCoreProperty`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: , asm: Assembly-CSharp}
+      data:
+        _tweenTargetObj: {fileID: 6212330929153463402}
+        obj: {fileID: 3487088562539301638}
+        _lastKnownObject: {fileID: 3487088562539301638}
+        _lastKnownTweenTargetGO: {fileID: 6212330929153463402}
+        type: 0
+        ease: 1
+        duration: 0.25
+        delay: 0
+        fromCurrentValue: 1
+        isIncreasingValue: 1
+        easeAnimationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        typeAnimationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        propertyName: localScale
+        propertyIndex: 7
+        isEmpty: 0
+        _startValue: {x: 0, y: 0, z: 0}
+        _finalValue: {x: -0.5, y: -0.5, z: -0.5}
+        _increaseValue: {x: 0, y: 0, z: 0}
+        _unityEvents:
+          unityOnStart:
+            m_PersistentCalls:
+              m_Calls: []
+          unityOnUpdate:
+            m_PersistentCalls:
+              m_Calls: []
+          unityOnUpdateValue:
+            m_PersistentCalls:
+              m_Calls: []
+          unityOnFinish:
+            m_PersistentCalls:
+              m_Calls: []
+    - rid: 7320318830429339708
+      type: {class: 'TweenCoreProperty`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: , asm: Assembly-CSharp}
+      data:
+        _tweenTargetObj: {fileID: 6212330929153463402}
+        obj: {fileID: 3487088562539301638}
+        _lastKnownObject: {fileID: 3487088562539301638}
+        _lastKnownTweenTargetGO: {fileID: 6212330929153463402}
+        type: 0
+        ease: 0
+        duration: 0.5
+        delay: 0
+        fromCurrentValue: 1
+        isIncreasingValue: 0
+        easeAnimationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        typeAnimationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        propertyName: position
+        propertyIndex: 0
+        isEmpty: 0
+        _startValue: {x: 0, y: 0, z: 0}
+        _finalValue: {x: 1, y: 1, z: 1}
+        _increaseValue: {x: 0, y: 0, z: 0}
+        _unityEvents:
+          unityOnStart:
+            m_PersistentCalls:
+              m_Calls: []
+          unityOnUpdate:
+            m_PersistentCalls:
+              m_Calls: []
+          unityOnUpdateValue:
+            m_PersistentCalls:
+              m_Calls: []
+          unityOnFinish:
+            m_PersistentCalls:
+              m_Calls: []
 --- !u!1 &6212330929153463402
 GameObject:
   m_ObjectHideFlags: 0

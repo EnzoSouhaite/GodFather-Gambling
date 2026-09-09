@@ -101,7 +101,7 @@ public class BetManager : MonoBehaviour
     
     public static void AddBet(SOPlayerInfo player, int bet)
     {
-        if (_bets.ContainsKey(player.Name)) return;
+        if (_bets.ContainsKey(player.Name) || _currentHorsesSelected.Count == 0) return;
         
         player.MakeTransaction(-bet);
 

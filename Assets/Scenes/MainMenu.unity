@@ -1174,7 +1174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
       propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
       propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1191,6 +1191,10 @@ PrefabInstance:
     - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
       propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
       propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

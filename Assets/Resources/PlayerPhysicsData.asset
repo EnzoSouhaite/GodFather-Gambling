@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: PlayerPhysicsData
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsMoveSettings
   walkSpeed: 750
-  canSprint: 1
+  canSprint: 0
   runSpeed: 100
   canSlow: 0
   slowSpeed: 0
-  canCrouch: 1
+  canCrouch: 0
   crouchSpeed: 400
   canJump: 1
-  canMultiJump: 1
+  canMultiJump: 0
   numJumps: 2
   jumpForce: 5
   differentJumpForces: 0

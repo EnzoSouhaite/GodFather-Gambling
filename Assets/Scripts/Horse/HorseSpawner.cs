@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HorseSpawner : MonoBehaviour
@@ -30,6 +31,10 @@ public class HorseSpawner : MonoBehaviour
     [Range(0f, 1f)]
     [Tooltip("Force de la tendance vers l'arrivée pendant la course (0 = aléatoire pur, 1 = ligne droite)")]
     [SerializeField] float _finishBias = 0.35f;
+    
+    [Header("Fin de course")]
+    [Tooltip("Nombre de chevaux à l'arrivée pour déclencher la fin de la course")]
+    [SerializeField] int _maxWinners = 3;
  
     [Header("Mouvement")]
     [Tooltip("Vitesse pendant l'attente dans l'enclos")]
@@ -43,7 +48,9 @@ public class HorseSpawner : MonoBehaviour
     [Tooltip("Si coché, lance automatiquement le spawn au démarrage de la scène")]
     [SerializeField] bool _autoSpawnOnStart = true;
  
-    readonly System.Collections.Generic.List<HorsePhysicsWander> _spawnedHorses = new();
+    readonly List<HorsePhysicsWander> _spawnedHorses = new();
+    readonly List<int> _winningHorseNumbers = new();
+    bool _isRaceActive = false;
  
     void Start()
     {
@@ -71,15 +78,17 @@ public class HorseSpawner : MonoBehaviour
         {
             Vector2 spawnPos = _useGridLayout ? GetGridPosition(i) : GetRandomPositionInZone();
  
-            if (skinPool.Count == 0) skinPool = GetShuffledSkinPool();
-            GameObject prefabToUse = skinPool[0];
-            skinPool.RemoveAt(0);
+            // Sélection du prefab dans l'ordre pour conserver l'apparence visuelle
+            GameObject prefabToUse = _horsePrefabs[i % _horsePrefabs.Length];
  
             GameObject horse = Instantiate(prefabToUse, spawnPos, Quaternion.identity);
  
             HorsePhysicsWander wander = horse.GetComponent<HorsePhysicsWander>();
             if (wander == null) wander = horse.AddComponent<HorsePhysicsWander>();
  
+            wander.HorseNumber = i + 1;
+            horse.name = $"Horse_{wander.HorseNumber}";
+
             wander.ConfigureMovement(_waitSpeed, finishTarget: null, finishBias: 0f);
  
             _spawnedHorses.Add(wander);
@@ -115,6 +124,8 @@ public class HorseSpawner : MonoBehaviour
             Debug.LogWarning("[HorseSpawner] Aucun _finishPoint assigné dans l'inspecteur.");
             return;
         }
+
+        _isRaceActive = true;
  
         foreach (HorsePhysicsWander horse in _spawnedHorses)
         {
@@ -125,14 +136,47 @@ public class HorseSpawner : MonoBehaviour
  
         if (_finishLine != null)
         {
+            _finishLine.OnHorseFinished -= HandleHorseFinished;
             _finishLine.OnHorseFinished += HandleHorseFinished;
         }
     }
  
     void HandleHorseFinished(GameObject horse, int rank)
     {
-        Debug.Log($"[HorseSpawner] {horse.name} termine {rank}{(rank == 1 ? "er" : "ème")}");
-        //brancher ici UI de résultats / tiercé
+        HorsePhysicsWander wander = horse.GetComponent<HorsePhysicsWander>();
+        if (wander != null && !_winningHorseNumbers.Contains(wander.HorseNumber))
+        {
+            _winningHorseNumbers.Add(wander.HorseNumber);
+            Debug.Log($"[HorseSpawner] Cheval N°{wander.HorseNumber} arrive en position {rank}");
+        }
+        if (rank >= _maxWinners)
+        {
+            StopRace();
+        }
+    }
+    
+    public void StopRace()
+    {
+        if (!_isRaceActive) return;
+        _isRaceActive = false;
+
+        // Arrête tous les chevaux encore en mouvement
+        foreach (HorsePhysicsWander horse in _spawnedHorses)
+        {
+            if (horse != null)
+            {
+                horse.StopWandering();
+            }
+        }
+
+        if (_finishLine != null)
+        {
+            _finishLine.OnHorseFinished -= HandleHorseFinished;
+        }
+
+        Debug.Log($"[HorseSpawner] Course terminée ! Le podium ({_maxWinners} premiers) est complet.");
+        
+        BetManager.GameFinished(_winningHorseNumbers.ToArray());
     }
  
     Vector2 GetRandomPositionInZone()

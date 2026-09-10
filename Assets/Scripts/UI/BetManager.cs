@@ -131,5 +131,7 @@ public class BetManager : MonoBehaviour
             playerInfo = AccountsManager.GetPlayer(betInfo.Name);
             playerInfo.MakeTransaction(winningStakes * (betInfo.Bet / totalPool));
         }
+
+        _bets.Clear();
     }
 }

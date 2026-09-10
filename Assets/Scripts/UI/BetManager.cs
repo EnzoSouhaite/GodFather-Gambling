@@ -91,6 +91,30 @@ public class BetManager : MonoBehaviour
         }
     }
 
+    public static bool GetIsHorseSelected(HorseSelectable horse)
+    {
+        return _currentHorsesSelected.Contains(horse);
+    }
+
+    public static bool CanSelectNewHorse()
+    {
+        return _currentHorsesSelected.Count < 3;
+    }
+
+    public static void UnselectHorse(HorseSelectable horse)
+    {
+        if (!_currentHorsesSelected.Contains(horse)) return;
+
+        _currentHorsesSelected.Remove(horse);
+    }
+
+    public static void SelectHorse(HorseSelectable horse)
+    {
+        if (_currentHorsesSelected.Count >= 3) return;
+
+        _currentHorsesSelected.Add(horse);
+    }
+
     public static void ClearSelection()
     {
         for (int i = _currentHorsesSelected.Count - 1; i >= 0; i--)

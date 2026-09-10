@@ -12,11 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b8180f6dd6597eb429685b099c862fda
   - enabled: 1
-    path: Assets/Scenes/UI_WIP.unity
+    path: Assets/Scenes/BetScreen.unity
     guid: bbd05ba89bbfd2e4ba13c0e491bdbf82
   - enabled: 1
     path: Assets/Scenes/HorseRace.unity
     guid: b9f03514e30348e439e7790f7fceffdd
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: cb8d22df7336b6645a1abe633f88a53f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 0ca6655a6dbc29344b3a3de2a6567e9d, type: 3}
   m_UseUCBPForAssetBundles: 0

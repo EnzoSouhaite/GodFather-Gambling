@@ -135,6 +135,12 @@ public class BetManager : MonoBehaviour
 
         _bets.Add(player.Name, soBet);
         OnNewBet?.Invoke(soBet);
+
+        foreach (HorseSelectable horse in _currentHorsesSelected)
+        {
+            horse.UnSelect();
+        }
+        _currentHorsesSelected.Clear();
     }
 
     public static List<SOBetInfo> GetAllBets()

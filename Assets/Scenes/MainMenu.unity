@@ -475,6 +475,34 @@ PrefabInstance:
       propertyPath: managedReferences[7320318830429339708].propertyIndex
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1058129268}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -619,6 +647,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1058129268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058129262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d6c69e0fa3720498929c3f0e4cfa00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
 --- !u!1001 &1223259695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1128,6 +1168,34 @@ PrefabInstance:
       propertyPath: managedReferences[7320318830429339708].propertyIndex
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1058129268}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572537593658544106, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      propertyPath: _unityEvents.OnFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2829093673924817135, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
     m_RemovedGameObjects: []
@@ -1136,6 +1204,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2230867892445733877, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1058129267}
+    - targetCorrespondingSourceObject: {fileID: 2230867892445733877, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1058129268}
   m_SourcePrefab: {fileID: 100100000, guid: be535e643a3c5464daec8a4fd5c2571d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

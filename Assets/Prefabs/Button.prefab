@@ -213,7 +213,7 @@ MonoBehaviour:
         _lastKnownTweenTargetGO: {fileID: 6212330929153463402}
         type: 0
         ease: 0
-        duration: 0.5
+        duration: 0.15
         delay: 0
         fromCurrentValue: 1
         isIncreasingValue: 0

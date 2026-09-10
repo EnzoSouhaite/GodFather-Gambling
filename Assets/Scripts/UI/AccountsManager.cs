@@ -8,26 +8,28 @@ public static class AccountsManager
     static private Dictionary<string, SOPlayerInfo> _players = new Dictionary<string, SOPlayerInfo>();
     static public event Action<List<SOPlayerInfo>, SOPlayerInfo> UpdatePlayers;
 
-    public static void AddPlayer(string name)
+    public static SOPlayerInfo AddPlayer(string name)
     {
-        if (DoesPlayerExist(name)) return;
+        if (DoesPlayerExist(name)) return GetPlayer(name);
 
         SOPlayerInfo player = ScriptableObject.CreateInstance<SOPlayerInfo>();
         player.Init(name);
         _players.Add(name, player);
         
         InvokeUpdate(player);
+        return player;
     }
 
-    public static void AddPlayer(string name, int balance)
+    public static SOPlayerInfo AddPlayer(string name, int balance)
     {
-        if (DoesPlayerExist(name)) return;
+        if (DoesPlayerExist(name)) return GetPlayer(name);
 
         SOPlayerInfo player = ScriptableObject.CreateInstance<SOPlayerInfo>();
         player.Init(name, balance);
         _players.Add(name, player);
 
         InvokeUpdate(player);
+        return player;
     }
 
     public static bool DoesPlayerExist(string name)

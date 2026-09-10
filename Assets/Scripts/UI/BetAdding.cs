@@ -5,31 +5,14 @@ using System.Linq;
 
 public class BetAdding : MonoBehaviour
 {
-    [SerializeField] private Dropdown _dropdown;
     [SerializeField] private Text _bet;
-
-    private void OnEnable()
-    {
-        AccountsManager.UpdatePlayers += UpdatePlayers;
-    }    
-
-    private void OnDisable()
-    {
-        AccountsManager.UpdatePlayers -= UpdatePlayers;
-    }
-
-    private void UpdatePlayers(List<SOPlayerInfo> allPlayers, SOPlayerInfo newPlayer)
-    {
-        _dropdown.ClearOptions();
-        List<string> names = allPlayers.Select(player => player.Name).ToList();
-        _dropdown.AddOptions(names);
-        _dropdown.value = allPlayers.IndexOf(newPlayer);
-    }
+    [SerializeField] private Text _name;
 
     public void AddBet()
     {
-        string playerName = _dropdown.options[_dropdown.value].text;
-        SOPlayerInfo playerInfo = AccountsManager.GetPlayer(playerName);
+        string playerName = _name.text;
+
+        SOPlayerInfo playerInfo = AccountsManager.AddPlayer(playerName);
 
         if (playerInfo == null) return;
 

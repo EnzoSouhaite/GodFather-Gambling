@@ -21,4 +21,14 @@ public class SOBetInfo : ScriptableObject
 
         _horses = horses.Select(horse => horse.Number).ToArray();
     }
+
+    public bool DoesWin(int[] horses)
+    {
+        foreach (int num in horses)
+        {
+            if (!_horses.Contains(num)) return false;
+        }
+
+        return true;
+    }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -101,7 +102,7 @@ public class BetManager : MonoBehaviour
     
     public static void AddBet(SOPlayerInfo player, int bet)
     {
-        if (_bets.ContainsKey(player.Name) || _currentHorsesSelected.Count == 0) return;
+        if (_bets.ContainsKey(player.Name) || _currentHorsesSelected.Count != 3) return;
         
         player.MakeTransaction(-bet);
 
@@ -110,5 +111,15 @@ public class BetManager : MonoBehaviour
 
         _bets.Add(player.Name, soBet);
         OnNewBet?.Invoke(soBet);
+    }
+
+    public static List<SOBetInfo> GetAllBets()
+    {
+        return _bets.Values.ToList();
+    }
+
+    public void GameFinished(int[] winHorses)
+    {
+        List<SOBetInfo> winners = _bets.Values.Where(i => i.DoesWin(winHorses)).ToList();
     }
 }

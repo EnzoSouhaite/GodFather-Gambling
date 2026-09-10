@@ -25,14 +25,20 @@ public class SOBetInfo : ScriptableObject
         _horses = horses.Select(horse => horse.Number).ToArray();
     }
 
-    public bool DoesWin(int[] horses)
+    public int GetNumHorseWellPlaced(int[] winHorses)
     {
-        foreach (int num in horses)
+        int num = 0;
+        int length = Mathf.Min(winHorses.Length, _horses.Length);
+
+        for (int i = 0; i < length; i++)
         {
-            if (!_horses.Contains(num)) return false;
+            if (winHorses[i] == _horses[i])
+            {
+                num++;
+            }
         }
 
-        return true;
+        return num;
     }
 
     public void SetWonAmount(int amount)

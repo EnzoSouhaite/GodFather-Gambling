@@ -34,5 +34,7 @@ public class LeaderBoardsManager : MonoBehaviour
             lastGame = Instantiate(_prefabPlayerLast, _lastContainer);
             lastGame.Init(bet.Name, bet.LastAmountWon);
         }
+
+        BetManager.ClearBets();
     }
 }

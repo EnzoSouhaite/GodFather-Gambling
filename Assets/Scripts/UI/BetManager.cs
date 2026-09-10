@@ -53,13 +53,30 @@ public class BetManager : MonoBehaviour
         if (!_currentHorsesSelected.Contains(horse)) return;
 
         _currentHorsesSelected.Remove(horse);
+
+        RemoveHorseTrophies();
+
+        int length = _currentHorsesSelected.Count;
+        for (int i = 0; i < length; i++)
+        {
+            _currentHorsesSelected[i].SetTrophy(i);
+        }
     }
 
     public static void SelectHorse(HorseSelectable horse)
     {
         if (_currentHorsesSelected.Count >= 3) return;
 
+        horse.SetTrophy(_currentHorsesSelected.Count);
         _currentHorsesSelected.Add(horse);
+    }
+
+    private static void RemoveHorseTrophies()
+    {
+        foreach (HorseSelectable horse in _currentHorsesSelected)
+        {
+            horse.RemoveTrophy();
+        }
     }
 
     public static void ClearSelection()
@@ -97,19 +114,40 @@ public class BetManager : MonoBehaviour
 
     public static void GameFinished(int[] winHorses)
     {
-        List<SOBetInfo> winners = _bets.Values.Where(i => i.DoesWin(winHorses)).ToList();
+        Dictionary<SOBetInfo, int> winners = new Dictionary<SOBetInfo, int>();
+        int num;
+
+        foreach (SOBetInfo bet in _bets.Values)
+        {
+            num = bet.GetNumHorseWellPlaced(winHorses);
+            if (num != 0)
+            {
+                winners.Add(bet, num);
+            }
+        }
+
         int totalPool = _bets.Values.Select(i => i.Bet).Sum();
         totalPool += (int)(totalPool * 0.1f);
-        int winningStakes = winners.Select(i => i.Bet).Sum();
+        int winningStakes = winners.Keys.Select(i => i.Bet).Sum();
 
         SOPlayerInfo playerInfo;
         int amount;
-        foreach (SOBetInfo betInfo in winners)
+        int realAmount;
+        int numHorses = winHorses.Length;
+        foreach (SOBetInfo betInfo in winners.Keys)
         {
             amount = winningStakes * (betInfo.Bet / totalPool);
+            realAmount = betInfo.Bet + (amount - betInfo.Bet) * (winners[betInfo] / numHorses);
+            if (realAmount < betInfo.Bet) realAmount = betInfo.Bet;
+
             playerInfo = AccountsManager.GetPlayer(betInfo.Name);
-            playerInfo.MakeTransaction(amount);
-            betInfo.SetWonAmount(amount);
+            playerInfo.MakeTransaction(realAmount);
+            betInfo.SetWonAmount(realAmount);
         }
+    }
+
+    public static void ClearBets()
+    {
+        _bets.Clear();
     }
 }

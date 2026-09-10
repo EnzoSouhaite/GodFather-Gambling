@@ -118,8 +118,20 @@ public class BetManager : MonoBehaviour
         return _bets.Values.ToList();
     }
 
-    public void GameFinished(int[] winHorses)
+    public static void GameFinished(int[] winHorses)
     {
         List<SOBetInfo> winners = _bets.Values.Where(i => i.DoesWin(winHorses)).ToList();
+        int totalPool = _bets.Values.Select(i => i.Bet).Sum();
+        totalPool += (int)(totalPool * 0.1f);
+        int winningStakes = winners.Select(i => i.Bet).Sum();
+
+        SOPlayerInfo playerInfo;
+        foreach (SOBetInfo betInfo in winners)
+        {
+            playerInfo = AccountsManager.GetPlayer(betInfo.Name);
+            playerInfo.MakeTransaction(winningStakes * (betInfo.Bet / totalPool));
+        }
+
+        _bets.Clear();
     }
 }

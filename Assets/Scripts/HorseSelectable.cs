@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class HorseSelectable : MonoBehaviour
     [SerializeField] private Sprite _image;
     [SerializeField] private Image _sprite;
     [SerializeField] private Image _outline;
+
+    [SerializeField] private GameObject[] _trophies;
 
     private void Start()
     {
@@ -50,6 +53,20 @@ public class HorseSelectable : MonoBehaviour
     {
         _isSelected = false;
         _outline.gameObject.SetActive(false);
+        RemoveTrophy();
+    }
+
+    public void SetTrophy(int placement)
+    {
+        _trophies[placement].SetActive(true);
+    }
+
+    public void RemoveTrophy()
+    {
+        foreach (GameObject trophy in _trophies)
+        {
+            trophy.SetActive(false);
+        }
     }
 
     public static Sprite GetSprite(int num)

@@ -53,13 +53,30 @@ public class BetManager : MonoBehaviour
         if (!_currentHorsesSelected.Contains(horse)) return;
 
         _currentHorsesSelected.Remove(horse);
+
+        RemoveHorseTrophies();
+
+        int length = _currentHorsesSelected.Count;
+        for (int i = 0; i < length; i++)
+        {
+            _currentHorsesSelected[i].SetTrophy(i);
+        }
     }
 
     public static void SelectHorse(HorseSelectable horse)
     {
         if (_currentHorsesSelected.Count >= 3) return;
 
+        horse.SetTrophy(_currentHorsesSelected.Count);
         _currentHorsesSelected.Add(horse);
+    }
+
+    private static void RemoveHorseTrophies()
+    {
+        foreach (HorseSelectable horse in _currentHorsesSelected)
+        {
+            horse.RemoveTrophy();
+        }
     }
 
     public static void ClearSelection()

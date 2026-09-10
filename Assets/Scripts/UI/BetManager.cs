@@ -21,9 +21,7 @@ public class BetManager : MonoBehaviour
         }
         private set => _instance = value;
     }
-
-    private static InputAction _click;
-
+    
     private static List<HorseSelectable> _currentHorsesSelected = new List<HorseSelectable>();
 
     private static Dictionary<string, SOBetInfo> _bets = new Dictionary<string, SOBetInfo>();
@@ -39,56 +37,6 @@ public class BetManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
-        CreateBinding();
-    }
-
-    private void OnEnable()
-    {
-        _click.started += OnClick;
-        _click.Enable();
-    }
-
-    private void OnDisable()
-    {
-        if (_click == null) return;
-
-        _click.started -= OnClick;
-        _click.Disable();
-    }
-
-    private static void CreateBinding()
-    {
-        if (_click != null) return;
-
-        _click = new InputAction(
-            name: "Click",
-            type: InputActionType.Button,
-            binding: "<Mouse>/leftButton"
-        );
-    }
-
-    private static void OnClick(InputAction.CallbackContext obj)
-    {
-        Vector2 screenPos = Mouse.current.position.ReadValue();
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-
-        RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 0f);
-        
-        HorseSelectable horse;
-        if (hit.collider != null && hit.collider.TryGetComponent<HorseSelectable>(out horse))
-        {
-            if (horse.IsSelected && _currentHorsesSelected.Contains(horse))
-            {
-                horse.UnSelect();
-                _currentHorsesSelected.Remove(horse);
-            }
-            else if (!horse.IsSelected && _currentHorsesSelected.Count < 3 && !_currentHorsesSelected.Contains(horse))
-            {
-                horse.Select();
-                _currentHorsesSelected.Add(horse);
-            }
-        }
     }
 
     public static bool GetIsHorseSelected(HorseSelectable horse)
@@ -144,7 +92,20 @@ public class BetManager : MonoBehaviour
 
     public static void GameFinished(int[] winHorses)
     {
+        Debug.Log($"[BetManager] L'ordre officiel d'arrivée est : {string.Join(" - ", winHorses)}");
+        
         List<SOBetInfo> winners = _bets.Values.Where(i => i.DoesWin(winHorses)).ToList();
+        
+        if (winners.Count > 0)
+        {
+            string winnerNames = string.Join(", ", winners.Select(w => w.Name));
+            Debug.Log($"[BetManager] 🎉 Joueur(s) ayant trouvé le bon ordre : {winnerNames}");
+        }
+        else
+        {
+            Debug.Log("[BetManager] ❌ Aucun joueur n'a trouvé l'ordre exact du Tiercé.");
+        }
+        
         int totalPool = _bets.Values.Select(i => i.Bet).Sum();
         totalPool += (int)(totalPool * 0.1f);
         int winningStakes = winners.Select(i => i.Bet).Sum();

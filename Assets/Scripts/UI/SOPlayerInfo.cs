@@ -24,6 +24,6 @@ public class SOPlayerInfo : ScriptableObject
 
     public void MakeTransaction(int amount)
     {
-        _balance -= amount;
+        _balance += amount;
     }
 }

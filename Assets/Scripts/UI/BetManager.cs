@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class BetManager : MonoBehaviour
 {
@@ -22,8 +21,6 @@ public class BetManager : MonoBehaviour
         private set => _instance = value;
     }
 
-    private static InputAction _click;
-
     private static List<HorseSelectable> _currentHorsesSelected = new List<HorseSelectable>();
 
     private static Dictionary<string, SOBetInfo> _bets = new Dictionary<string, SOBetInfo>();
@@ -39,56 +36,6 @@ public class BetManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
-        CreateBinding();
-    }
-
-    private void OnEnable()
-    {
-        _click.started += OnClick;
-        _click.Enable();
-    }
-
-    private void OnDisable()
-    {
-        if (_click == null) return;
-
-        _click.started -= OnClick;
-        _click.Disable();
-    }
-
-    private static void CreateBinding()
-    {
-        if (_click != null) return;
-
-        _click = new InputAction(
-            name: "Click",
-            type: InputActionType.Button,
-            binding: "<Mouse>/leftButton"
-        );
-    }
-
-    private static void OnClick(InputAction.CallbackContext obj)
-    {
-        Vector2 screenPos = Mouse.current.position.ReadValue();
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-
-        RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero, 0f);
-        
-        HorseSelectable horse;
-        if (hit.collider != null && hit.collider.TryGetComponent<HorseSelectable>(out horse))
-        {
-            if (horse.IsSelected && _currentHorsesSelected.Contains(horse))
-            {
-                horse.UnSelect();
-                _currentHorsesSelected.Remove(horse);
-            }
-            else if (!horse.IsSelected && _currentHorsesSelected.Count < 3 && !_currentHorsesSelected.Contains(horse))
-            {
-                horse.Select();
-                _currentHorsesSelected.Add(horse);
-            }
-        }
     }
 
     public static bool GetIsHorseSelected(HorseSelectable horse)
@@ -156,12 +103,13 @@ public class BetManager : MonoBehaviour
         int winningStakes = winners.Select(i => i.Bet).Sum();
 
         SOPlayerInfo playerInfo;
+        int amount;
         foreach (SOBetInfo betInfo in winners)
         {
+            amount = winningStakes * (betInfo.Bet / totalPool);
             playerInfo = AccountsManager.GetPlayer(betInfo.Name);
-            playerInfo.MakeTransaction(winningStakes * (betInfo.Bet / totalPool));
+            playerInfo.MakeTransaction(amount);
+            betInfo.SetWonAmount(amount);
         }
-
-        _bets.Clear();
     }
 }

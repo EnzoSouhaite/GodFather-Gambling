@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7395214093367368515}
   - component: {fileID: 8033909380215788147}
   m_Layer: 0
-  m_Name: Horse
+  m_Name: Horse 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 56246fb14ac476545a5e3fb93a140fc5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee225e8dc3d1ade48afbbec3b1311cda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,5 +170,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.768219, y: -0.833142}
-  m_Radius: 3.5331368
+  m_Offset: {x: 0.601421, y: -1.077237}
+  m_Radius: 3.7365482

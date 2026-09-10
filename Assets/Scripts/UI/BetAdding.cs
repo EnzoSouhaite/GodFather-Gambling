@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class BetAdding : MonoBehaviour
 {
@@ -18,5 +20,10 @@ public class BetAdding : MonoBehaviour
 
         BetManager.AddBet(playerInfo, int.Parse(_bet.text));
         _bet.text = string.Empty;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("HorseRace");
     }
 }

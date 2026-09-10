@@ -519,7 +519,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -1117,15 +1117,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HorseSpawner
   _horsePrefabs:
   - {fileID: 4275001200888795821, guid: d8b7cfc89561d1646a00579d6482eb26, type: 3}
+  - {fileID: 4275001200888795821, guid: b7f4c733b41e6df44a08c7920a23d7e2, type: 3}
+  - {fileID: 4275001200888795821, guid: 77faf46576db71847ab8cc14f3972c9b, type: 3}
+  - {fileID: 4275001200888795821, guid: c7b81deb012989a4d9e023a274543ce0, type: 3}
+  - {fileID: 4275001200888795821, guid: 4f1a23291db66b14e8fb489f07f2d581, type: 3}
+  - {fileID: 4275001200888795821, guid: 7f8cc76ec9be51a43900a10d1de47dab, type: 3}
+  - {fileID: 4275001200888795821, guid: 587b39f9151a13f4ab0557c04725504f, type: 3}
+  - {fileID: 4275001200888795821, guid: 925be723611a0e341b8319a93128546c, type: 3}
   _horseCount: 8
-  _zoneCenter: {x: -80, y: 40}
-  _zoneSize: {x: 30, y: 30}
+  _zoneCenter: {x: -75, y: 40}
+  _zoneSize: {x: 40, y: 30}
   _useGridLayout: 1
   _gridColumns: 4
-  _gridSpacing: 0.3
+  _gridSpacing: 0.5
   _finishPoint: {fileID: 2023357943}
   _finishLine: {fileID: 2023357945}
   _finishBias: 0.35
+  _maxWinners: 3
   _waitSpeed: 1.5
   _raceSpeed: 25
   _startDelay: 1

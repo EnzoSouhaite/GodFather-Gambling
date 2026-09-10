@@ -27,6 +27,14 @@ public class HorsePhysicsWander : MonoBehaviour
     [Header("Rebond sur collision")]
     [Tooltip("Angle aléatoire ajouté après un rebond sur un mur (en degrés), pour éviter les rebonds trop mécaniques")]
     [SerializeField] float _bounceRandomAngle = 25f;
+    
+    [Header("Identifiant")]
+    [SerializeField] private int _horseNumber;
+    public int HorseNumber 
+    { 
+        get => _horseNumber; 
+        set => _horseNumber = value; 
+    }
  
     Rigidbody2D _rb;
     Coroutine _directionRoutine;

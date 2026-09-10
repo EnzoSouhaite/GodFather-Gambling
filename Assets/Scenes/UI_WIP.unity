@@ -514,6 +514,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.7132075
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.7132075
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.7132075
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 662935917883617791, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: HorseSelectable, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1122998556510266868, guid: c7d0297d674c78c459b5ec63d26d0c96, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -609,6 +665,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 698076605}
   - {fileID: 25751796}
-  - {fileID: 8298312015529404683}
   - {fileID: 148919666}
   - {fileID: 708202675}
+  - {fileID: 8298312015529404683}

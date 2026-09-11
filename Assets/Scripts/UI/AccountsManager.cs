@@ -8,6 +8,11 @@ public static class AccountsManager
     static private Dictionary<string, SOPlayerInfo> _players = new Dictionary<string, SOPlayerInfo>();
     static public event Action<List<SOPlayerInfo>, SOPlayerInfo> UpdatePlayers;
 
+    private static string NormalizeName(string name)
+    {
+        return name.Trim();
+    }
+
     public static List<SOPlayerInfo> GetAllPlayers()
     {
         return _players.Values.ToList();
@@ -15,6 +20,7 @@ public static class AccountsManager
 
     public static SOPlayerInfo AddPlayer(string name)
     {
+        name = NormalizeName(name);
         if (DoesPlayerExist(name)) return GetPlayer(name);
 
         SOPlayerInfo player = ScriptableObject.CreateInstance<SOPlayerInfo>();
@@ -27,6 +33,7 @@ public static class AccountsManager
 
     public static SOPlayerInfo AddPlayer(string name, int balance)
     {
+        name = NormalizeName(name);
         if (DoesPlayerExist(name)) return GetPlayer(name);
 
         SOPlayerInfo player = ScriptableObject.CreateInstance<SOPlayerInfo>();
@@ -39,6 +46,7 @@ public static class AccountsManager
 
     public static bool DoesPlayerExist(string name)
     {
+        name = NormalizeName(name);
         return _players.ContainsKey(name);
     }
 
@@ -53,6 +61,17 @@ public static class AccountsManager
 
     public static SOPlayerInfo GetPlayer(string name)
     {
+        name = NormalizeName(name);
         return DoesPlayerExist(name) ? _players[name] : null;
+    }
+
+    public static void LoadPlayers(List<SOPlayerInfo> players)
+    {
+        _players.Clear();
+        
+        foreach (SOPlayerInfo player in players)
+        {
+            _players.Add(player.Name, player);
+        }
     }
 }

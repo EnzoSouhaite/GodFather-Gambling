@@ -70,5 +70,7 @@ public class LeaderBoardsManager : MonoBehaviour
         _betList.SetBets(BetManager.GetAllBets());
 
         BetManager.ClearBets();
+
+        SaveManager.SaveGame();
     }
 }

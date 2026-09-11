@@ -114,6 +114,8 @@ public class BetManager : MonoBehaviour
 
     public static void GameFinished(int[] winHorses)
     {
+        Debug.Log($"[BetManager] L'ordre officiel d'arrivée est : {string.Join(" - ", winHorses)}");
+        
         Dictionary<SOBetInfo, int> winners = new Dictionary<SOBetInfo, int>();
         int num;
 
@@ -126,6 +128,17 @@ public class BetManager : MonoBehaviour
             }
         }
 
+        if (winners.Count > 0)
+        {
+            // Affiche le nom et le nombre de chevaux trouvés pour chaque gagnant
+            string winnerNames = string.Join(", ", winners.Select(kvp => $"{kvp.Key.Name} ({kvp.Value} bon(s) cheval/chevaux)"));
+            Debug.Log($"[BetManager] 🎉 Joueur(s) gagnant(s) : {winnerNames}");
+        }
+        else
+        {
+            Debug.Log("[BetManager] ❌ Aucun joueur n'a trouvé de cheval gagnant.");
+        }
+        
         int totalPool = _bets.Values.Select(i => i.Bet).Sum();
         totalPool += (int)(totalPool * 0.1f);
         int winningStakes = winners.Keys.Select(i => i.Bet).Sum();
@@ -143,6 +156,8 @@ public class BetManager : MonoBehaviour
             playerInfo = AccountsManager.GetPlayer(betInfo.Name);
             playerInfo.MakeTransaction(realAmount);
             betInfo.SetWonAmount(realAmount);
+            
+            Debug.Log($"[BetManager] 💰 {betInfo.Name} remporte {realAmount} jetons ! (Gain partiel : {winners[betInfo]}/{numHorses} chevaux trouvés)");
         }
     }
 

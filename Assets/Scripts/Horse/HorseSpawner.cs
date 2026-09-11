@@ -47,6 +47,9 @@ public class HorseSpawner : MonoBehaviour
     [Header("Debug / Test")]
     [Tooltip("Si coché, lance automatiquement le spawn au démarrage de la scène")]
     [SerializeField] bool _autoSpawnOnStart = true;
+    
+    [Header("Obstacles")]
+    [SerializeField] private TemporaryObstacle[] _obstacles;
  
     readonly List<HorsePhysicsWander> _spawnedHorses = new();
     readonly List<int> _winningHorseNumbers = new();
@@ -119,6 +122,14 @@ public class HorseSpawner : MonoBehaviour
     
     public void StartRace()
     {
+        if (_obstacles != null)
+        {
+            foreach (var obstacle in _obstacles)
+            {
+                if (obstacle != null) obstacle.ResetObstacle();
+            }
+        }
+        
         if (_finishPoint == null)
         {
             Debug.LogWarning("[HorseSpawner] Aucun _finishPoint assigné dans l'inspecteur.");

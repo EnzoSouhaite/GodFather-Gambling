@@ -494,6 +494,50 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7304273104565506009}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayGambleSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 581254967056001544, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2123567950630997620, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -606,11 +650,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4366557186761010899, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00012207031
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861026775213695758, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00012207031
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+--- !u!114 &7304273104565506009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7757009823883842944, guid: e09b24c5be085a744af7962272f71a8b, type: 3}
+  m_PrefabInstance: {fileID: 7304273104565506008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d6c69e0fa3720498929c3f0e4cfa00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

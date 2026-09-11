@@ -150,6 +150,8 @@ public class HorseSpawner : MonoBehaviour
             _finishLine.OnHorseFinished -= HandleHorseFinished;
             _finishLine.OnHorseFinished += HandleHorseFinished;
         }
+
+        SoundManager.Instance.PlayInfiniteLoop(SoundEnum.Cheering);
     }
  
     void HandleHorseFinished(GameObject horse, int rank)
@@ -187,6 +189,8 @@ public class HorseSpawner : MonoBehaviour
 
         Debug.Log($"[HorseSpawner] Course terminée ! Le podium ({_maxWinners} premiers) est complet.");
         
+        SoundManager.Instance.StopInfiniteLoop(SoundEnum.Cheering);
+
         BetManager.GameFinished(_winningHorseNumbers.ToArray());
     }
  

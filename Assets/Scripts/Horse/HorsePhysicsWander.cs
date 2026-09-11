@@ -35,7 +35,9 @@ public class HorsePhysicsWander : MonoBehaviour
         get => _horseNumber; 
         set => _horseNumber = value; 
     }
- 
+
+    [SerializeField] private float _chanceOfSoundOnColl = 0.01f;
+
     Rigidbody2D _rb;
     Coroutine _directionRoutine;
     bool _isWandering = false;
@@ -131,5 +133,7 @@ public class HorsePhysicsWander : MonoBehaviour
         Vector2 rotatedVelocity = Quaternion.Euler(0, 0, randomOffset) * currentVelocity;
  
         _rb.linearVelocity = rotatedVelocity.normalized * _speed;
+
+        SoundManager.Instance.PlaySoundWithChance(SoundEnum.HorseFart, _chanceOfSoundOnColl);
     }
 }

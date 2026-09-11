@@ -20,10 +20,13 @@ public class BetAdding : MonoBehaviour
 
         BetManager.AddBet(playerInfo, int.Parse(_bet.text));
         _bet.text = string.Empty;
+
+        SoundManager.Instance.PlaySound(SoundEnum.ButtonGamble);
     }
 
     public void StartGame()
     {
+        SoundManager.Instance.PlaySound(SoundEnum.ButtonRace);
         SceneManager.LoadScene("HorseRace");
     }
 }

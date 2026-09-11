@@ -72,6 +72,18 @@ public class BetManager : MonoBehaviour
 
         horse.SetTrophy(_currentHorsesSelected.Count);
         _currentHorsesSelected.Add(horse);
+        switch (_currentHorsesSelected.Count)
+        {
+            case 1:
+                SoundManager.Instance.PlaySound(SoundEnum.SelectHorseFirst);
+                break;
+            case 2:
+                SoundManager.Instance.PlaySound(SoundEnum.SelectHorseSecond);
+                break;
+            case 3:
+                SoundManager.Instance.PlaySound(SoundEnum.SelectHorseThird);
+                break;
+        }
     }
 
     private static void RemoveHorseTrophies()

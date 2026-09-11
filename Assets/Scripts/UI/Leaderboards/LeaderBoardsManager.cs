@@ -15,16 +15,20 @@ public class LeaderBoardsManager : MonoBehaviour
     [SerializeField] private Image[] _podium;
     [SerializeField] private List<Sprite> _horsesSprites = new List<Sprite>();
 
+    [SerializeField] private GameObject _winScreen;
+
     private int playerCapGlob = 10;
     private int playerCapLast = 10;
     private int playerCapWorst = 5;
 
     private void Start()
     {
+        _winScreen.SetActive(true);
+
         List<SOPlayerInfo> allPlayers = AccountsManager.GetAllPlayers();
 
         allPlayers.Sort((a, b) => b.Balance.CompareTo(a.Balance));
-        allPlayers.RemoveRange(playerCapGlob, allPlayers.Count - playerCapGlob);
+        if (allPlayers.Count > playerCapGlob) allPlayers.RemoveRange(playerCapGlob, allPlayers.Count - playerCapGlob);
 
         PlayerGlobalLeader stat;
         foreach (SOPlayerInfo player in allPlayers)
@@ -36,7 +40,7 @@ public class LeaderBoardsManager : MonoBehaviour
         List<SOBetInfo> allBets = BetManager.GetAllBets();
 
         allBets.Sort((a, b) => b.LastAmountWon.CompareTo(a.LastAmountWon));
-        allBets.RemoveRange(playerCapLast, allBets.Count - playerCapLast);
+        if (allBets.Count > playerCapLast) allBets.RemoveRange(playerCapLast, allBets.Count - playerCapLast);
 
         PlayerLastGame lastGame;
         foreach (SOBetInfo bet in allBets)
@@ -47,7 +51,7 @@ public class LeaderBoardsManager : MonoBehaviour
 
         List<SOPlayerInfo> worstPlayers = AccountsManager.GetAllPlayers();
         worstPlayers.Sort((a, b) => a.Balance.CompareTo(b.Balance));
-        worstPlayers.RemoveRange(playerCapWorst, worstPlayers.Count - playerCapWorst);
+        if (worstPlayers.Count > playerCapWorst) worstPlayers.RemoveRange(playerCapWorst, worstPlayers.Count - playerCapWorst);
 
         PlayerGlobalLeader worstStat;
         foreach (SOPlayerInfo player in worstPlayers)

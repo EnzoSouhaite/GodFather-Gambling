@@ -420,7 +420,7 @@ Transform:
   m_GameObject: {fileID: 72557231}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.03, y: 40.36, z: 0}
+  m_LocalPosition: {x: -55.03, y: 40.36, z: 1}
   m_LocalScale: {x: 6.8268237, y: 6.8268237, z: 6.8268237}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5386,9 +5386,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 11.175825, y: 4.541853}
-      - {x: 1.618741, y: 7.9864798}
-      - {x: 0.5018251, y: 3.0754957}
-      - {x: -1.3009982, y: -0.78118706}
+      - {x: 1.6187425, y: 7.9864864}
+      - {x: 0.50182515, y: 3.075496}
+      - {x: -1.3009982, y: -0.7811868}
       - {x: 13.864494, y: -8.732473}
       - {x: 10.055733, y: 0.5429324}
       - {x: 10.058109, y: 0.74427617}
@@ -5480,9 +5480,9 @@ MonoBehaviour:
   m_Modifiers: []
   m_ColliderSegment:
   - {x: 11.175825, y: 4.541853}
-  - {x: 1.618741, y: 7.9864798}
-  - {x: 0.5018251, y: 3.0754957}
-  - {x: -1.3009982, y: -0.78118706}
+  - {x: 1.6187425, y: 7.9864864}
+  - {x: 0.50182515, y: 3.075496}
+  - {x: -1.3009982, y: -0.7811868}
   - {x: 13.864494, y: -8.732473}
   - {x: 10.055733, y: 0.5429324}
   - {x: 10.058109, y: 0.74427617}
@@ -5551,8 +5551,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 6.3639007, y: -0.7787943, z: 0}
-    m_Extent: {x: 8.330213, y: 8.831476, z: 0}
+    m_Center: {x: 6.3639007, y: -0.7788029, z: 0}
+    m_Extent: {x: 8.330213, y: 8.831468, z: 0}
   m_SpriteSortPoint: 0
 --- !u!4 &592609429
 Transform:
@@ -6510,6 +6510,7 @@ MonoBehaviour:
   _autoSpawnOnStart: 1
   _obstacles:
   - {fileID: 1428912046}
+  _startRaceButton: {fileID: 1693232223}
 --- !u!4 &1305751382
 Transform:
   m_ObjectHideFlags: 0
@@ -8192,7 +8193,15 @@ PrefabInstance:
       value: Launch the Game
       objectReference: {fileID: 0}
     - target: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
@@ -8200,11 +8209,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1305751381}
     - target: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1305751380}
+    - target: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartRace
       objectReference: {fileID: 0}
     - target: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HorseSpawner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: HorseSpawner, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8217,6 +8238,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4056353497421618039, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
   m_PrefabInstance: {fileID: 1693232220}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1693232223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6766803060824223739, guid: 5700cd21222ba3144aebcfe93febb52f, type: 3}
+  m_PrefabInstance: {fileID: 1693232220}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1752623972
 GameObject:
   m_ObjectHideFlags: 0

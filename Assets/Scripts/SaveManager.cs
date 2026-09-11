@@ -22,7 +22,7 @@ public class SaveManager : MonoBehaviour
 
         for (int i = 0; i < length; i++)
         {
-            PlayerPrefs.SetString(_keyPlayerName + i, players[i].name);
+            PlayerPrefs.SetString(_keyPlayerName + i, players[i].Name);
             PlayerPrefs.SetInt(_keyPlayerBalance + i, players[i].Balance);
         }
         

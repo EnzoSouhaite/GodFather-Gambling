@@ -24,7 +24,7 @@ public class LeaderBoardsManager : MonoBehaviour
         List<SOPlayerInfo> allPlayers = AccountsManager.GetAllPlayers();
 
         allPlayers.Sort((a, b) => b.Balance.CompareTo(a.Balance));
-        allPlayers.RemoveRange(playerCapGlob - 1, allPlayers.Count - playerCapGlob);
+        allPlayers.RemoveRange(playerCapGlob, allPlayers.Count - playerCapGlob);
 
         PlayerGlobalLeader stat;
         foreach (SOPlayerInfo player in allPlayers)
@@ -36,7 +36,7 @@ public class LeaderBoardsManager : MonoBehaviour
         List<SOBetInfo> allBets = BetManager.GetAllBets();
 
         allBets.Sort((a, b) => b.LastAmountWon.CompareTo(a.LastAmountWon));
-        allBets.RemoveRange(playerCapLast - 1, allBets.Count - playerCapLast);
+        allBets.RemoveRange(playerCapLast, allBets.Count - playerCapLast);
 
         PlayerLastGame lastGame;
         foreach (SOBetInfo bet in allBets)
@@ -47,7 +47,7 @@ public class LeaderBoardsManager : MonoBehaviour
 
         List<SOPlayerInfo> worstPlayers = AccountsManager.GetAllPlayers();
         worstPlayers.Sort((a, b) => a.Balance.CompareTo(b.Balance));
-        worstPlayers.RemoveRange(playerCapWorst - 1, worstPlayers.Count - playerCapWorst);
+        worstPlayers.RemoveRange(playerCapWorst, worstPlayers.Count - playerCapWorst);
 
         PlayerGlobalLeader worstStat;
         foreach (SOPlayerInfo player in worstPlayers)

@@ -5551,8 +5551,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 6.3639007, y: -0.7787943, z: 0}
-    m_Extent: {x: 8.330213, y: 8.831476, z: 0}
+    m_Center: {x: 6.3639007, y: -0.7788029, z: 0}
+    m_Extent: {x: 8.330213, y: 8.831468, z: 0}
   m_SpriteSortPoint: 0
 --- !u!4 &592609429
 Transform:
@@ -6505,7 +6505,7 @@ MonoBehaviour:
   _finishBias: 0.35
   _maxWinners: 3
   _waitSpeed: 1.5
-  _raceSpeed: 25
+  _raceSpeed: 50
   _startDelay: 1
   _autoSpawnOnStart: 1
   _obstacles:

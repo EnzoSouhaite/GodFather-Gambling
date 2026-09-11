@@ -36,7 +36,7 @@ public class HorsePhysicsWander : MonoBehaviour
         set => _horseNumber = value; 
     }
 
-    [SerializeField] private float _chanceOfSoundOnColl = 0.01f;
+    [SerializeField] private float _chanceOfSoundOnColl = 0.005f;
 
     Rigidbody2D _rb;
     Coroutine _directionRoutine;

@@ -443,7 +443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &157235285
 ParticleSystemRenderer:
   serializedVersion: 7
@@ -5551,8 +5551,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 6.3639007, y: -0.7788029, z: 0}
-    m_Extent: {x: 8.330213, y: 8.831468, z: 0}
+    m_Center: {x: 6.3639007, y: -0.7787943, z: 0}
+    m_Extent: {x: 8.330213, y: 8.831476, z: 0}
   m_SpriteSortPoint: 0
 --- !u!4 &592609429
 Transform:

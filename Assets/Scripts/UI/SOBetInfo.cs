@@ -14,8 +14,8 @@ public class SOBetInfo : ScriptableObject
     private int[] _horses = new int[0];
     public int[] Horses => _horses;
 
-    private int _lastAmountWon;
-    public int LastAmountWon => _lastAmountWon;
+    private long _lastAmountWon;
+    public long LastAmountWon => _lastAmountWon;
 
     public void Init(string name, int bet, List<HorseSelectable> horses)
     {
@@ -41,7 +41,7 @@ public class SOBetInfo : ScriptableObject
         return num;
     }
 
-    public void SetWonAmount(int amount)
+    public void SetWonAmount(long amount)
     {
         _lastAmountWon = amount;
     }

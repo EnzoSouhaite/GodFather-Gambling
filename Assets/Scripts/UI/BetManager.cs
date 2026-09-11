@@ -132,6 +132,16 @@ public class BetManager : MonoBehaviour
         return _bets.Values.ToList();
     }
 
+    private static long Sum(List<long> list)
+    {
+        long sum = 0;
+        foreach (long num in list)
+        {
+            sum += num;
+        }
+        return sum;
+    }
+
     public static void GameFinished(int[] winHorses)
     {
         winningHorses = winHorses;
@@ -166,15 +176,14 @@ public class BetManager : MonoBehaviour
             Debug.Log("[BetManager] ❌ Aucun joueur n'a trouvé de cheval gagnant.");
         }
 
-        float totalPool = _bets.Values.Select(i => i.Bet).Sum();
-        totalPool *= 1f;
-        float winningStakes = winners.Keys.Select(i => i.Bet).Sum();
+        long totalPool = Sum(_bets.Values.Select(i => (long)i.Bet).ToList());
+        long winningStakes = Sum(winners.Keys.Select(i => (long)i.Bet).ToList());
 
         SOPlayerInfo playerInfo;
-        float amount;
-        float realAmount;
-        float wonAmount;
-        float numHorses = winHorses.Length;
+        long amount;
+        long realAmount;
+        long wonAmount;
+        long numHorses = winHorses.Length;
 
         foreach (SOBetInfo bet in losers)
         {
@@ -189,8 +198,8 @@ public class BetManager : MonoBehaviour
             wonAmount = realAmount - betInfo.Bet;
 
             playerInfo = AccountsManager.GetPlayer(betInfo.Name);
-            playerInfo.MakeTransaction((int)realAmount);
-            betInfo.SetWonAmount((int)wonAmount);
+            playerInfo.MakeTransaction((long)realAmount);
+            betInfo.SetWonAmount((long)wonAmount);
             
             Debug.Log($"[BetManager] 💰 {betInfo.Name} remporte {realAmount} jetons ! (Gain partiel : {winners[betInfo]}/{numHorses} chevaux trouvés)");
         }

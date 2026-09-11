@@ -4,9 +4,9 @@ using UnityEngine;
 public class SOPlayerInfo : ScriptableObject
 {
     private string _name;
-    private int _balance;
+    private long _balance;
     public string Name => _name;
-    public int Balance => _balance;
+    public long Balance => _balance;
 
     private int _defaultBalance = 1000;
 
@@ -22,7 +22,7 @@ public class SOPlayerInfo : ScriptableObject
         _balance = balance;
     }
 
-    public void MakeTransaction(int amount)
+    public void MakeTransaction(long amount)
     {
         _balance += amount;
     }

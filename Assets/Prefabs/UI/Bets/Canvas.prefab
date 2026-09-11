@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b244a120edd614d869090efbbe9279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BetAdding
-  _bet: {fileID: 4778840361674229297}
-  _name: {fileID: 371938516843278255}
+  _bet: {fileID: 5144257879831113691}
+  _name: {fileID: 8019680612297522372}
 --- !u!1 &966052109964959117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,7 +2576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6484594611576863917, guid: 834e77c74beb5734fb8c377541eed02d, type: 3}
       propertyPath: m_Transition
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6484594611576863917, guid: 834e77c74beb5734fb8c377541eed02d, type: 3}
       propertyPath: m_Colors.m_NormalColor.b

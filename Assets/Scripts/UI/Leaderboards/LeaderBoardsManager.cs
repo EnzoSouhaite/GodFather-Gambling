@@ -16,6 +16,7 @@ public class LeaderBoardsManager : MonoBehaviour
     [SerializeField] private List<Sprite> _horsesSprites = new List<Sprite>();
 
     [SerializeField] private GameObject _winScreen;
+    [SerializeField] private BetList _betList;
 
     private int playerCapGlob = 10;
     private int playerCapLast = 10;
@@ -60,12 +61,14 @@ public class LeaderBoardsManager : MonoBehaviour
             worstStat.Init(player.Name, player.Balance);
         }
 
-        BetManager.ClearBets();
-
         int length = Mathf.Min(_podium.Length, BetManager.winningHorses.Length);
         for (int i = 0; i < length; i++)
         {
             _podium[i].sprite = _horsesSprites[BetManager.winningHorses[i] - 1];
         }
+
+        _betList.SetBets(BetManager.GetAllBets());
+
+        BetManager.ClearBets();
     }
 }

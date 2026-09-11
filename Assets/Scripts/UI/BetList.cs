@@ -5,9 +5,8 @@ public class BetList : MonoBehaviour
 {
     [SerializeField] private GameObject _betPrefab;
 
-    private void Start()
+    public void SetBets(List<SOBetInfo> bets)
     {
-        List<SOBetInfo> bets = BetManager.GetAllBets();
         foreach (SOBetInfo bet in bets)
         {
             OnNewBet(bet);

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BetManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class BetManager : MonoBehaviour
     private static Dictionary<string, SOBetInfo> _bets = new Dictionary<string, SOBetInfo>();
 
     public static event Action<SOBetInfo> OnNewBet;
+
+    public static int[] winningHorses;
 
     private void Awake()
     {
@@ -114,8 +117,11 @@ public class BetManager : MonoBehaviour
 
     public static void GameFinished(int[] winHorses)
     {
+        winningHorses = winHorses;
+
         Debug.Log($"[BetManager] L'ordre officiel d'arrivée est : {string.Join(" - ", winHorses)}");
         
+        List<SOBetInfo> losers = new List<SOBetInfo>();
         Dictionary<SOBetInfo, int> winners = new Dictionary<SOBetInfo, int>();
         int num;
 
@@ -125,6 +131,10 @@ public class BetManager : MonoBehaviour
             if (num != 0)
             {
                 winners.Add(bet, num);
+            }
+            else
+            {
+                losers.Add(bet);
             }
         }
 
@@ -138,27 +148,37 @@ public class BetManager : MonoBehaviour
         {
             Debug.Log("[BetManager] ❌ Aucun joueur n'a trouvé de cheval gagnant.");
         }
-        
-        int totalPool = _bets.Values.Select(i => i.Bet).Sum();
-        totalPool += (int)(totalPool * 0.1f);
-        int winningStakes = winners.Keys.Select(i => i.Bet).Sum();
+
+        float totalPool = _bets.Values.Select(i => i.Bet).Sum();
+        totalPool *= 1f;
+        float winningStakes = winners.Keys.Select(i => i.Bet).Sum();
 
         SOPlayerInfo playerInfo;
-        int amount;
-        int realAmount;
-        int numHorses = winHorses.Length;
+        float amount;
+        float realAmount;
+        float wonAmount;
+        float numHorses = winHorses.Length;
+
+        foreach (SOBetInfo bet in losers)
+        {
+            bet.SetWonAmount(-bet.Bet);
+        }
+
         foreach (SOBetInfo betInfo in winners.Keys)
         {
-            amount = winningStakes * (betInfo.Bet / totalPool);
+            amount = totalPool * (betInfo.Bet / winningStakes);
             realAmount = betInfo.Bet + (amount - betInfo.Bet) * (winners[betInfo] / numHorses);
             if (realAmount < betInfo.Bet) realAmount = betInfo.Bet;
+            wonAmount = realAmount - betInfo.Bet;
 
             playerInfo = AccountsManager.GetPlayer(betInfo.Name);
-            playerInfo.MakeTransaction(realAmount);
-            betInfo.SetWonAmount(realAmount);
+            playerInfo.MakeTransaction((int)realAmount);
+            betInfo.SetWonAmount((int)wonAmount);
             
             Debug.Log($"[BetManager] 💰 {betInfo.Name} remporte {realAmount} jetons ! (Gain partiel : {winners[betInfo]}/{numHorses} chevaux trouvés)");
         }
+
+        SceneManager.LoadScene(3);
     }
 
     public static void ClearBets()

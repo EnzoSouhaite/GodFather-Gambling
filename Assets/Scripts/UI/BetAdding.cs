@@ -9,6 +9,8 @@ public class BetAdding : MonoBehaviour
 
     public void AddBet()
     {
+        if (string.IsNullOrEmpty(_name.text) || string.IsNullOrEmpty(_bet.text) || !BetManager.CanBet()) return;
+
         string playerName = _name.text;
 
         SOPlayerInfo playerInfo = AccountsManager.AddPlayer(playerName);

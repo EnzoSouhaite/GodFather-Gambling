@@ -41,6 +41,11 @@ public class BetManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public static bool CanBet()
+    {
+        return _currentHorsesSelected.Count == 3;
+    }
+
     public static bool GetIsHorseSelected(HorseSelectable horse)
     {
         return _currentHorsesSelected.Contains(horse);

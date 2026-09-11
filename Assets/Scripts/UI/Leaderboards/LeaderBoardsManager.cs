@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LeaderBoardsManager : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class LeaderBoardsManager : MonoBehaviour
 
     [SerializeField] private PlayerLastGame _prefabPlayerLast;
     [SerializeField] private Transform _lastContainer;
+
+    [SerializeField] private Image[] _podium;
+    [SerializeField] private List<Sprite> _horsesSprites = new List<Sprite>();
 
     private void Start()
     {
@@ -36,5 +40,11 @@ public class LeaderBoardsManager : MonoBehaviour
         }
 
         BetManager.ClearBets();
+
+        int length = Mathf.Min(_podium.Length, BetManager.winningHorses.Length);
+        for (int i = 0; i < length; i++)
+        {
+            _podium[i].sprite = _horsesSprites[BetManager.winningHorses[i] - 1];
+        }
     }
 }

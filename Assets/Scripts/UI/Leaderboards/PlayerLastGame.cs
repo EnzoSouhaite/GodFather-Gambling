@@ -9,6 +9,6 @@ public class PlayerLastGame : MonoBehaviour
     public void Init(string name, int balance)
     {
         _playerName.text = name;
-        _playerBalance.text = balance.ToString();
+        _playerBalance.text = balance.ToString() + " $";
     }
 }

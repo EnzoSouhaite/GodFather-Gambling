@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HorseSpawner : MonoBehaviour
 {
@@ -50,10 +52,15 @@ public class HorseSpawner : MonoBehaviour
     
     [Header("Obstacles")]
     [SerializeField] private TemporaryObstacle[] _obstacles;
+    
+    [Header("UI")]
+    [Tooltip("Glisse le bouton Start Race ici")]
+    [SerializeField] Button _startRaceButton;
  
     readonly List<HorsePhysicsWander> _spawnedHorses = new();
     readonly List<int> _winningHorseNumbers = new();
     bool _isRaceActive = false;
+    Coroutine _buttonTimerCoroutine;
  
     void Start()
     {
@@ -122,6 +129,15 @@ public class HorseSpawner : MonoBehaviour
     
     public void StartRace()
     {
+        if (_startRaceButton != null)
+        {
+            if (_buttonTimerCoroutine != null)
+            {
+                StopCoroutine(_buttonTimerCoroutine);
+            }
+            _buttonTimerCoroutine = StartCoroutine(DisableButtonRoutine(0.5f)); // Change 2f ici si tu veux plus longtemps (ex: 3f ou 4f)
+        }
+        
         if (_obstacles != null)
         {
             foreach (var obstacle in _obstacles)
@@ -246,6 +262,15 @@ public class HorseSpawner : MonoBehaviour
         {
             _finishLine.OnHorseFinished -= HandleHorseFinished;
         }
+    }
+    
+    private IEnumerator DisableButtonRoutine(float delay)
+    {
+        _startRaceButton.interactable = false;
+        
+        yield return new WaitForSecondsRealtime(delay);
+        
+        _startRaceButton.gameObject.SetActive(false);
     }
 }
 

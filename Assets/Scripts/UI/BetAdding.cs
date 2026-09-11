@@ -12,8 +12,9 @@ public class BetAdding : MonoBehaviour
         string playerName = _name.text;
 
         SOPlayerInfo playerInfo = AccountsManager.AddPlayer(playerName);
-
-        BetManager.AddBet(playerInfo, int.Parse(_bet.text));
+        int bet = int.Parse(_bet.text);
+        if (bet < 0) bet *= -1;
+        BetManager.AddBet(playerInfo, bet);
         _bet.text = "";
         _name.text = "";
 

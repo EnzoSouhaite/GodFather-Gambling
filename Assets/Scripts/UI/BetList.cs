@@ -1,8 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BetList : MonoBehaviour
 {
     [SerializeField] private GameObject _betPrefab;
+
+    private void Start()
+    {
+        List<SOBetInfo> bets = BetManager.GetAllBets();
+        foreach (SOBetInfo bet in bets)
+        {
+            OnNewBet(bet);
+        }
+    }
 
     private void OnEnable()
     {

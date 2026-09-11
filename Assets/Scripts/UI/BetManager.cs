@@ -182,7 +182,6 @@ public class BetManager : MonoBehaviour
         SOPlayerInfo playerInfo;
         long amount;
         long realAmount;
-        long wonAmount;
         long numHorses = winHorses.Length;
 
         foreach (SOBetInfo bet in losers)
@@ -195,11 +194,10 @@ public class BetManager : MonoBehaviour
             amount = totalPool * (betInfo.Bet / winningStakes);
             realAmount = betInfo.Bet + (amount - betInfo.Bet) * (winners[betInfo] / numHorses);
             if (realAmount < betInfo.Bet) realAmount = betInfo.Bet;
-            wonAmount = realAmount - betInfo.Bet;
 
             playerInfo = AccountsManager.GetPlayer(betInfo.Name);
             playerInfo.MakeTransaction((long)realAmount);
-            betInfo.SetWonAmount((long)wonAmount);
+            betInfo.SetWonAmount((long)realAmount);
             
             Debug.Log($"[BetManager] 💰 {betInfo.Name} remporte {realAmount} jetons ! (Gain partiel : {winners[betInfo]}/{numHorses} chevaux trouvés)");
         }

@@ -26,6 +26,7 @@ public class LeaderBoardsManager : MonoBehaviour
     {
         _winScreen.SetActive(true);
 
+        // Global leader bord
         List<SOPlayerInfo> allPlayers = AccountsManager.GetAllPlayers();
 
         allPlayers.Sort((a, b) => b.Balance.CompareTo(a.Balance));
@@ -38,17 +39,11 @@ public class LeaderBoardsManager : MonoBehaviour
             stat.Init(player.Name, player.Balance);
         }
 
+        // Worst leader board
         List<SOBetInfo> allBets = BetManager.GetAllBets();
 
         allBets.Sort((a, b) => b.LastAmountWon.CompareTo(a.LastAmountWon));
         if (allBets.Count > playerCapLast) allBets.RemoveRange(playerCapLast, allBets.Count - playerCapLast);
-
-        PlayerLastGame lastGame;
-        foreach (SOBetInfo bet in allBets)
-        {
-            lastGame = Instantiate(_prefabPlayerLast, _lastContainer);
-            lastGame.Init(bet.Name, bet.LastAmountWon);
-        }
 
         List<SOPlayerInfo> worstPlayers = AccountsManager.GetAllPlayers();
         worstPlayers.Sort((a, b) => a.Balance.CompareTo(b.Balance));
@@ -59,6 +54,14 @@ public class LeaderBoardsManager : MonoBehaviour
         {
             worstStat = Instantiate(_prefabPlayerGlobal, _worstContainer);
             worstStat.Init(player.Name, player.Balance);
+        }
+
+        // Last bets leader board
+        PlayerLastGame lastGame;
+        foreach (SOBetInfo bet in allBets)
+        {
+            lastGame = Instantiate(_prefabPlayerLast, _lastContainer);
+            lastGame.Init(bet.Name, bet.LastAmountWon);
         }
 
         int length = Mathf.Min(_podium.Length, BetManager.winningHorses.Length);

@@ -1,8 +1,5 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.UI;
-using System.Linq;
-using UnityEditor;
 using UnityEngine.SceneManagement;
 
 public class BetAdding : MonoBehaviour

@@ -62,7 +62,8 @@ public static class AccountsManager
     public static SOPlayerInfo GetPlayer(string name)
     {
         name = NormalizeName(name);
-        return DoesPlayerExist(name) ? _players[name] : null;
+        if (DoesPlayerExist(name)) return _players[name];
+        else return null;
     }
 
     public static void LoadPlayers(List<SOPlayerInfo> players)

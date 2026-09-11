@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class BetAdding : MonoBehaviour
 {
-    [SerializeField] private Text _bet;
-    [SerializeField] private Text _name;
+    [SerializeField] private InputField _bet;
+    [SerializeField] private InputField _name;
 
     public void AddBet()
     {
@@ -16,10 +16,9 @@ public class BetAdding : MonoBehaviour
 
         SOPlayerInfo playerInfo = AccountsManager.AddPlayer(playerName);
 
-        if (playerInfo == null) return;
-
         BetManager.AddBet(playerInfo, int.Parse(_bet.text));
-        _bet.text = string.Empty;
+        _bet.text = "";
+        _name.text = "";
 
         SoundManager.Instance.PlaySound(SoundEnum.ButtonGamble);
     }
